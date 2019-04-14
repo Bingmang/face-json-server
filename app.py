@@ -20,7 +20,7 @@ def save_face_db(data):
         raise Exception('Updating falied, face-db.json has been locked.')
     update_lock = True
     with open(FACE_DB_PATH, 'w', encoding='UTF-8') as f:
-        json.dump(data, f)
+        json.dump(data, f, ensure_ascii=False)
     update_lock = False
 
 
@@ -37,7 +37,7 @@ def api_face_db():
     global face_db
 
     if request.method == 'GET':
-        return json.dumps(face_db)
+        return json.dumps(face_db, ensure_ascii=False)
 
     if request.method == 'POST':
         data = request.get_data()
