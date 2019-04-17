@@ -1,8 +1,10 @@
 import json
 import os
 from flask import Flask, request
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, supports_credentials=True)
 
 FACE_DB_PATH = os.path.join(os.path.split(__file__)[0], 'face-db.json')
 update_lock = False
